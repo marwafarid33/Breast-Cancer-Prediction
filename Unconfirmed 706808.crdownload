@@ -46,28 +46,28 @@ def predict_cancer(user_input):
     probability = logistic_model.predict_proba(input_data)[0][1]  # Probability of malignant (1)
 
 def predict_cancer(user_input):
-    # Convert user input into a DataFrame
+    
     input_data = pd.DataFrame([user_input], columns=X.columns)
 
-    # Make prediction
+    
     prediction = logistic_model.predict(input_data)[0]
     probability = logistic_model.predict_proba(input_data)[0][1]  # Probability of malignant (1)
 
-    # Display result
+    
     if prediction == 1:
         return f"The result indicates cancer (Malignant) with a probability of {probability:.2%}."
     else:
         return f"The result indicates no cancer (Benign) with a probability of {1 - probability:.2%}."
 
-# Example usage
+
 print("Enter values for the following features:")
 
-# Prompt user to input data
+
 user_input = {}
 for feature in X.columns:
     user_input[feature] = float(input(f"{feature}: "))
 
-# Display prediction result
+
 result = predict_cancer(user_input)
 print("\nPrediction Result:")
 print(result)
